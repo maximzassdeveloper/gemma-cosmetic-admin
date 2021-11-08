@@ -21,7 +21,7 @@ export const Container: React.FC<ContainerProps> = ({ children, title, headerCon
             {headerContent}
           </div>}
           <div className="header__user">
-            {user?.fullName}
+            {user?.fullName} 
             <Button onClick={logout}>Выход</Button>
           </div>
         </Row>
