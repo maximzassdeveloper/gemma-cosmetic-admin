@@ -11,7 +11,7 @@ export const Attributes: FC = () => {
 
   const deleteHandler = async (id: number) => {
     await fetchData({ url: `/attributes/delete/${id}`, type: 'delete' })
-    setAttrs(attrs.filter(x => x.id !== id))
+    setAttrs(attrs.filter(x => x.id !== id)) 
   }
 
   const getAttrs = async () => {
