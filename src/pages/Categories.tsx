@@ -33,7 +33,7 @@ export const Categories: FC = () => {
   const createHandler = async (data: any) => {
     const newCat = await fetchData({ url: `/categories/create`, type: 'post', data })
     if (!newCat) return
-    setCats([newCat, ...cats])
+    setCats([newCat, ...cats]) 
   }
 
   return (

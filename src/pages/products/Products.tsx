@@ -8,7 +8,7 @@ import { SERVER_URL } from '../../helper/config'
 
 const { Column } = Table
 
-export const Products: React.FC = () => {
+export const Products: React.FC = () => { 
 
   const [products, setProducts] = useState<IProduct[]>([])
   const [loading, setLoading] = useState(false)
