@@ -30,7 +30,7 @@ export const TagsWidget: FC<TagsWidgetProps> = ({ value, onChange }) => {
         value={text}
         placeholder='Вводите теги через запятую' rows={3} 
       />
-      {tags.map(tag => <Tag style={{marginTop: 5, fontSize: 14}}>{tag}</Tag>)}
+      {tags.map((tag, i) => <Tag key={tag+i} style={{marginTop: 5, fontSize: 14}}>{tag}</Tag>)}
     </div>
   )
 }

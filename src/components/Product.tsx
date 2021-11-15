@@ -5,6 +5,7 @@ import { Container, FileUpload } from '../components'
 import { AttributeWidget, CategoryWidget, MetaWidget, TagsWidget } from '../components/widgets'
 import { validateMessages } from '../helper/validationMes'
 import { IProduct } from '../types/product'
+import { HtmlEditor } from './HtmlEditor'
 
 interface IFields {
   name: string,
@@ -82,11 +83,12 @@ export const Product: FC<ProductProps> = ({ data: serverData, title, buttonText,
               </Form.Item>
 
               <Form.Item name='desc'>
-                <Input.TextArea 
+                {/* <Input.TextArea 
                   showCount 
                   rows={8} 
                   placeholder='Описание товара' 
-                />
+                /> */}
+                <HtmlEditor />
               </Form.Item>
 
             </Col>

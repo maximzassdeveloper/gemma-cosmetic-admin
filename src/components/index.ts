@@ -1,5 +1,7 @@
 export { Sidebar } from './Sidebar'
 export { Container } from './Container'
 export { FileUpload } from './FileUpload'
+export { HtmlEditor } from './HtmlEditor'
 export { Product } from './Product'
 export { Loader } from './Loader'
+export { List } from './List'

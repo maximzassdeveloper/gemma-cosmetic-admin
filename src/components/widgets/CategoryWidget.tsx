@@ -1,5 +1,4 @@
 import React from 'react'
-import slugify from 'slugify'
 import { Input, Select, Col, Row, Typography, Button } from 'antd'
 import { ICategory } from '../../types/product'
 import { fetchData } from '../../services/fetchData'
@@ -23,20 +22,27 @@ export const CategoryWidget: React.FC<CategoryWidgetProps> = React.memo(({ value
     setSelected(value)
   }
 
-  const addHandler = () => {
+  const addHandler = async () => {
     if (!name.trim()) return
 
-    const newCat = { id: Date.now(), name, slug: slugify(name, { lower: true }) }
+    const newCat: ICategory = await fetchData({ 
+      url: '/categories/create', 
+      type: 'post', 
+      data: { name } 
+    })
+    if (!newCat) return
+
     setCats([newCat, ...cats])
     setSelected([...selected, name])
     setName('')
   }
 
+  const getCats = async () => {
+    const data = await fetchData({ url: '/categories' })
+    setCats(data)
+  }
+
   React.useEffect(() => {
-    const getCats = async () => {
-      const data = await fetchData({ url: '/categories' })
-      setCats(data)
-    }
     getCats()
 
     if (!value) return

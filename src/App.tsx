@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import { Layout } from 'antd'
 import { Sidebar } from './components'
-import { CreateProduct, UpdateProduct, Dashboard, Login, Products } from './pages'
+import * as pages from './pages'
 import { authContext } from './services/context/context'
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
       {!isAuth 
       ? <Switch>
           <Route path='/' exact>
-            <Login />
+            <pages.Login />
           </Route>
           <Redirect to='/' />
         </Switch> 
@@ -28,10 +28,12 @@ function App() {
           <Sidebar />
 
           <Switch>
-            <Route path='/products/product/:slug' component={UpdateProduct} />
-            <Route path='/products/create' component={CreateProduct} />
-            <Route path='/products' exact component={Products} />
-            <Route path='/' exact component={Dashboard} />
+            <Route path='/products/product/:slug' component={pages.UpdateProduct} />
+            <Route path='/products/create' component={pages.CreateProduct} />
+            <Route path='/products' exact component={pages.Products} />
+            <Route path='/categories' exact component={pages.Categories} />
+            <Route path='/attributes' exact component={pages.Attributes} />
+            <Route path='/' exact component={pages.Dashboard} />
             <Redirect to={'/'} />
           </Switch>
 

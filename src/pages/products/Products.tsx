@@ -1,6 +1,6 @@
-import React from 'react'
-import { Table, Image, Button } from 'antd'
-import { Container } from '../../components'
+import { useState, useEffect } from 'react'
+import { Table, Image } from 'antd'
+import { Container, List } from '../../components'
 import { Link } from 'react-router-dom'
 import { IProduct } from '../../types/product'
 import { fetchData } from '../../services/fetchData'
@@ -10,35 +10,28 @@ const { Column } = Table
 
 export const Products: React.FC = () => {
 
-  const [products, setProducts] = React.useState<IProduct[] | null>(null)
+  const [products, setProducts] = useState<IProduct[]>([])
+  const [loading, setLoading] = useState(false)
 
   const getProducts = async () => {
+    setLoading(true)
     const data = await fetchData({url: '/products'})
     setProducts(data)
+    setLoading(false)
   }
 
-  React.useEffect(() => {
-    if (!products) getProducts()
-    return () => setProducts(null)
+  useEffect(() => {
+    getProducts()
   }, [])
 
   const deleteHandler = async (id: number) => {
     await fetchData({ url: `/products/delete/${id}`, type: 'delete' })
-    setProducts(products?.filter(p => p.id !== id) || [])
+    setProducts(products?.filter(p => p.id !== id))
   }
 
   return (
     <Container title={'Все товары'}>
-      <Table 
-        dataSource={products || []}
-        sticky
-        tableLayout='auto'
-      >
-        <Column 
-          title='Id' 
-          dataIndex='id' 
-          width='5%' 
-        />
+      <List data={products} loading={loading} onDelete={deleteHandler}>
         <Column 
           title='Название' 
           dataIndex='name' 
@@ -64,24 +57,7 @@ export const Products: React.FC = () => {
           sorter={{compare: (a: IProduct, b) => a.price - b.price}} 
           render={text => text+' руб'}
         />
-        <Column 
-          title='Дата' 
-          dataIndex='date' 
-          width='16%' 
-          render={(_, r: IProduct) => <p>
-              Обновлено {new Date(r.updatedAt).toLocaleDateString()}<br />
-              Опубликовано {new Date(r.createdAt).toLocaleDateString()}
-            </p>} 
-        />
-        <Column 
-          title='Действия' 
-          dataIndex='delete' 
-          width='10%' 
-          render={(_, r: IProduct) => <>
-              <Button onClick={() => deleteHandler(r.id)}>Удалить</Button>
-            </>} 
-        />
-      </Table>
+      </List>
     </Container>
   )
 }
