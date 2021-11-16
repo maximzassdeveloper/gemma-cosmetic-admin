@@ -59,11 +59,12 @@ export const FileUpload: React.FC<FileUploadProps> = ({
   }
 
   const removeHandler = async (file: UploadFile) => {
+    const f = file.response?.file?.url || file.name
+    if (!f) return false
     try {
-      await authAxios.post('/upload/remove', { url: file.response.file.url })
+      await authAxios.post('/upload/remove', { url: f })
     } catch(e) {
       console.log(e)
-      return false
     }
   }
 

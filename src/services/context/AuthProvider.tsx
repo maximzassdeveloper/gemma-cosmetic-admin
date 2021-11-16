@@ -44,8 +44,7 @@ export const AuthProvider: FC = ({ children }) => {
 
     } catch(e) {
       console.log(e)
-    }
-    setLoading(false)
+    } finally { setLoading(false) }
   }
 
   const logout = async () => {
