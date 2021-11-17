@@ -2,12 +2,12 @@ import { FC, useEffect, useState } from 'react'
 import { Table, Image, Button } from 'antd'
 import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc'
 import { MenuOutlined } from '@ant-design/icons'
-import { arrayMoveImmutable } from 'array-move';
+import { arrayMoveImmutable } from 'array-move'
 import { Link } from 'react-router-dom'
 import { SERVER_URL } from '../../helper/config'
 import { IProduct } from '../../types/product'
-import { Container } from '../../components';
-import { fetchData } from '../../services/fetchData';
+import { Container } from '../../components'
+import { fetchData } from '../../services/fetchData'
 
 const arr: IProduct[] = []
 
