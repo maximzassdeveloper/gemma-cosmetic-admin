@@ -26,8 +26,7 @@
     "@types/node": "^12.20.33",
     "@types/react": "^17.0.30",
     "@types/react-dom": "^17.0.9",
-    "@types/react-router-dom": "^5.3.1",
-    "@types/react-sortable-hoc": "^0.7.1"
+    "@types/react-router-dom": "^5.3.1"
   },
   "browserslist": {
     "production": [
