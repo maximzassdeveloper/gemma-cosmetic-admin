@@ -64,6 +64,7 @@ export const Categories: FC = () => {
             sticky
             tableLayout='auto'
             loading={loading}
+            rowKey='id'
           >
             <Column 
               title='Id' 

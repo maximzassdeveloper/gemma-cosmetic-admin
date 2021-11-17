@@ -14,6 +14,7 @@ export const List: FC<ListProps> = ({ children, data, loading, onDelete }) => {
       loading={loading}
       tableLayout='auto'
       sticky
+      rowKey='id'
     >
       <Table.Column 
         title='Id'

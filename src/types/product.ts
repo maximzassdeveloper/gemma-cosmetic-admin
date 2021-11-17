@@ -55,6 +55,7 @@ export interface IProduct {
   price: number
   shortDesc?: string
   desc?: any
+  index: number
   images: IFile[]
   categories?: ICategory[]
   attrs?: IProductAttribute[]
