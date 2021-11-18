@@ -82,20 +82,15 @@ export const Products: FC = () => {
       
       setProducts(newData)
       
-      const curProduct = products.find((_, i) => i === oldIndex)
-      const sdProduct = products.find((_, i) => i === newIndex)
-      if (!curProduct || !sdProduct) return
-      await fetchData({ 
-        url: `products/update/${curProduct.id}`,
-        type: 'put',
-        data: { index: newIndex }
+      newData.forEach(async (product, index) => {
+        if (product.id === products[index].id) return
+
+        await fetchData({
+          url: `/products/update/${product.id}`,
+          type: 'put',
+          data: { index }
+        })
       })
-      await fetchData({ 
-        url: `products/update/${sdProduct.id}`,
-        type: 'put',
-        data: { index: oldIndex }
-      })
-        
     }
   }
 
