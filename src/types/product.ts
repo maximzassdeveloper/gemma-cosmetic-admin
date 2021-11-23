@@ -1,9 +1,9 @@
 export interface ICategory {
-  id: number
-  name: string
-  slug: string
+  id: number,
+  name: string,
+  slug: string,
   updatedAt: string,
-  createdAt: string
+  createdAt: string,
 }
 
 export interface IComment {
@@ -13,8 +13,7 @@ export interface IComment {
   rating: number
   userId: number
   productId: number
-  images?: string[]
-  videos?: string[]
+  files?: IFile[]
   product?: IProduct
 }
 
@@ -65,6 +64,6 @@ export interface IProduct {
   metaDesc?: string
   metaRobots?: string
   metaKeywords?: string
-  updatedAt: string,
+  updatedAt: string
   createdAt: string
 }

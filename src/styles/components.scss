@@ -45,6 +45,14 @@
   display: none;
 }
 
+.ant-form-item {
+  margin-bottom: 15px;
+  transition: .2s;
+  &.ant-form-item-has-error {
+    margin-bottom: 5px;
+  }
+}
+
 .create-product {
   .ant-form-item {
     margin-bottom: 15px;

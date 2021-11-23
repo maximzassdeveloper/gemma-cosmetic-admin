@@ -33,6 +33,7 @@ function App() {
             <Route path='/products' exact component={pages.Products} />
             <Route path='/categories' exact component={pages.Categories} />
             <Route path='/attributes' exact component={pages.Attributes} />
+            <Route path='/comments' exact component={pages.Reviews} />
             <Route path='/' exact component={pages.Dashboard} />
             <Redirect to={'/'} />
           </Switch>

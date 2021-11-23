@@ -4,10 +4,11 @@ import { Table, Button } from 'antd'
 interface ListProps {
   data: any[],
   loading?: boolean,
-  onDelete?: (id: number) => void
+  onDelete?: (id: number) => void,
+  onUpdate?: (id: number) => void
 }
 
-export const List: FC<ListProps> = ({ children, data, loading, onDelete }) => {
+export const List: FC<ListProps> = ({ children, data, loading, onDelete, onUpdate }) => {
   return (
     <Table
       dataSource={data}
@@ -31,14 +32,15 @@ export const List: FC<ListProps> = ({ children, data, loading, onDelete }) => {
             Опубликовано {new Date(r.createdAt).toLocaleDateString()}
           </p>} 
       />
-      <Table.Column 
+      {(onUpdate || onDelete) && <Table.Column 
         title='Действия' 
         dataIndex='delete' 
         width='10%' 
         render={(_, r: any) => <>
-            <Button onClick={() => onDelete ? onDelete(r.id) : ''}>Удалить</Button>
+            {onDelete && <Button style={{ marginBottom: 5 }} onClick={() => onDelete(r.id)}>Удалить</Button>}
+            {onUpdate && <Button onClick={() => onUpdate(r.id)}>Изменить</Button>}
           </>} 
-      />
+      />}
     </Table>
   )
 }

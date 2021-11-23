@@ -128,6 +128,7 @@ export const Products: FC = () => {
 
   return (
     <Container title='Товары'>
+      {!!products.length && <p>{products.length} товаров</p>}
       <Table 
         dataSource={products}
         columns={columns}

@@ -6,9 +6,10 @@ import {
   AppstoreOutlined,
   BookOutlined,
   WindowsOutlined,
-  SnippetsOutlined
+  SnippetsOutlined,
+  CommentOutlined
 } from '@ant-design/icons'
-
+ 
 const menu = [{
   name: 'Консоль',
   link: '/',
@@ -29,6 +30,10 @@ const menu = [{
   name: 'Атрибуты',
   link: '/attributes',
   icon: <SnippetsOutlined />
+}, {
+  name: 'Отзывы',
+  link: '/comments',
+  icon: <CommentOutlined />
 }]
 
 export const Sidebar: React.FC = React.memo(() => {

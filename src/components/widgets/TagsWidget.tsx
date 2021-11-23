@@ -24,7 +24,7 @@ export const TagsWidget: FC<TagsWidgetProps> = ({ value, onChange }) => {
 
   return (
     <div className="tags-widget widget">
-      <Typography.Title level={5}>Категории</Typography.Title>
+      <Typography.Title level={5}>Теги</Typography.Title>
       <Input.TextArea 
         onChange={changeHandler}
         value={text}

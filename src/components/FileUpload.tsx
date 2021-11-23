@@ -22,7 +22,7 @@ function getBase64(file: File) {
   })
 }
 
-export const FileUpload: React.FC<FileUploadProps> = ({ 
+export const FileUpload: React.FC<FileUploadProps> = React.memo(({ 
   max = 5, files: serverFiles, onChange 
 }) => {
 
@@ -99,4 +99,4 @@ export const FileUpload: React.FC<FileUploadProps> = ({
       </Modal>
     </>
   )
-}
+})
